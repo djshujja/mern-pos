@@ -4,7 +4,7 @@ const Product = require("../models/productModel");
 
 router.get("/", async (req, res) => {
   try {
-    const products = await Product.find({}).select("-_v");
+    const products = await Product.find({})
 
     if (products != "") {
       return res.send({
@@ -25,10 +25,10 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    let { productId, productName } = req.body;
+    let { id, name } = req.body;
     const newProduct = new Product({
-      productId: productId,
-      productName: productName,
+      id: id,
+      name: name,
     });
 
     await newProduct.save();
@@ -49,7 +49,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findOne({
-      productId: id,
+      id: id,
     });
     if (product != "") {
       await product.remove();
@@ -74,7 +74,7 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
     console.log(id);
     let product = await Product.findOne({
-      productId: id,
+      id: id,
     }).select("-__v");
 
     console.log(product);
@@ -93,17 +93,17 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:prodId", async (req, res) => {
   try {
-    const { id } = req.params;
-    const { productId, productName } = req.body;
+    const { prodId } = req.params;
+    const { id, name } = req.body;
     const product = await Product.findOneAndUpdate(
       {
-        productId: id,
+        prodId: id,
       },
       {
-        productId: productId,
-        productName: productName,
+        id: id,
+        name: name,
       }
     );
     if (product != "") {
@@ -123,5 +123,7 @@ router.put("/:id", async (req, res) => {
     });
   }
 });
+
+
 
 module.exports = router;
