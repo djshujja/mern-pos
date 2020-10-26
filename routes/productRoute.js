@@ -75,21 +75,19 @@ router.get("/:id", async (req, res) => {
     console.log(id);
     let product = await Product.findOne({
       id: id,
-    }).select("-__v");
+    });
 
-    console.log(product);
     if (product) {
-      res.send(product);
+      return  res.send(product);
     }
 
     res.status(404).send({
       message: `No product with id ${id} exists on db! ;c`,
     });
-  } catch (error) {
-    res.status(500).send({
-      message: "Error Occured on Server!",
-      error: error,
-    });
+
+  } 
+  catch (error) {
+    res.send(error)  
   }
 });
 

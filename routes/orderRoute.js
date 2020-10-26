@@ -19,7 +19,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
    try {
-       
         const {products, bill } = req.body
         let order = new Order({
             products: products,
@@ -27,8 +26,9 @@ router.post('/', async (req, res) => {
         })
         
          products.forEach(async product => {
-            const abc = await Product.findOne({_id: product})
-            console.log(abc)
+            const dataProduct = await Product.findOne({_id: product.id});
+            dataProduct.qty = Number(dataProduct.qty) - Number(product.qty);
+            await dataProduct.save()
         });
        
 
