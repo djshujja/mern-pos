@@ -1,23 +1,26 @@
 import React,{useState} from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import LoadingSpinner from '../UI/LoadingSpinner'
 
 const AddProduct = props => {
 const [productID, setProductID] = useState('')
 const [productName, setProductName] = useState('')
+const [productUnitPrice, setProductUnitPrice] = useState('')
 
 
     const handleReset = () => {
         setProductID('')
         setProductName('')
+        setProductUnitPrice('')
     }
 
     const handleSubmit = event => {
         event.preventDefault()
         const newProduct = {
             id: productID,
-            name: productName
+            name: productName,
+            unitPrice: productUnitPrice,
+            qty:"Please Add Stock"
         }
 
         props.addProduct(newProduct)
@@ -44,6 +47,15 @@ const [productName, setProductName] = useState('')
                     value={productName}
                     onChange={e => setProductName(e.target.value)}
                 />
+                <TextField 
+                    variant='standard'
+                    color='secondary'
+                    type='text'
+                    label='Unit Price'
+                    value={productUnitPrice}
+                    onChange={e => setProductUnitPrice(e.target.value)}
+                />
+                
                 <br/>
                 <br/>
                 <Button

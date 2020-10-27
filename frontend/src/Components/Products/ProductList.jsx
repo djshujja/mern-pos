@@ -1,5 +1,4 @@
     import React from 'react';
-    import { makeStyles } from '@material-ui/core/styles';
     import Table from '@material-ui/core/Table';
     import TableBody from '@material-ui/core/TableBody';
     import TableCell from '@material-ui/core/TableCell';
@@ -31,14 +30,12 @@ const ProductList = props => {
            
           >
             <TableHead>
-              <TableRow>
+              <TableRow >
                 <TableCell align="center">Product ID</TableCell>
                 <TableCell align="center">Product Name</TableCell>
                 <TableCell align="center">Product Quantity</TableCell>
                 <TableCell align="center">Unit Price</TableCell>
                 <TableCell align="center">Actions</TableCell>
-
-               
               </TableRow>
             </TableHead>
             <TableBody>
@@ -65,38 +62,32 @@ const ProductList = props => {
                     >{product.unitPrice}</TableCell>
                     <TableCell
                     align="center"
-                    ></TableCell>   
+                    ><Button 
+                    variant='contained'
+                    size='small'
+                    type='submit'
+                    color='secondary' 
+                    style={{width:"100px"}}
+                    onClick={props.deleteProduct.bind(this,product.id)}
+                    >
+                    Delete
+                </Button>
+                <br/>
+                <br/>
+                <Button 
+                    variant='contained'
+                    size='small'
+                    type='submit'
+                    color='secondary' 
+                    style={{width:"100px"}}
+                    >
+                    <Link style={{textDecoration:"none", color:"white"}} to={`/stock/${product.id}`}>
+                     Add Stock
+                    </Link>
+                </Button></TableCell>   
                     
                     
-                    <TableCell
-                    align="center"
-                    >   
-                    <Button 
-                        variant='contained'
-                        size='small'
-                        type='submit'
-                        color='secondary' 
-                        onClick={props.deleteProduct.bind(this,product.id)}
-                        >
-                        Delete
-                    </Button>
-                    <br/>
-                    <br/>
-                    <Button 
-                        variant='contained'
-                        size='small'
-                        type='submit'
-                        color='secondary' 
-                        
-                        >
-                        <Link style={{textDecoration:"none", color:"white"}} to={`/stock/${product.id}`}>
-                         Add Stock
-                        </Link>
-                    </Button>
-
-
-
-                    </TableCell>
+                   
 
                     
 

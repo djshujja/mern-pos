@@ -26,12 +26,12 @@ router.post('/', async (req, res) => {
         })
         
          products.forEach(async product => {
-            const dataProduct = await Product.findOne({_id: product.id});
+            const dataProduct = await Product.findOne({_id: product._id});
             dataProduct.qty = Number(dataProduct.qty) - Number(product.qty);
             await dataProduct.save()
         });
        
-
+        console.log(order)
         await order.save()
         
         res.send(order)
@@ -43,5 +43,22 @@ router.post('/', async (req, res) => {
 
 })
 
+router.get('/:id', async (req, res) => {
+    try {
+        const {id} = req.params
+        const order = await Order.findOne({_id:id})
+
+        if(order){
+
+            return res.send(order)
+        }
+        res.send({
+            message:`No order with id ${id} exists on DB`
+        })
+
+    } catch (error) {
+        res.send(error)
+    }
+})
 
 module.exports = router;

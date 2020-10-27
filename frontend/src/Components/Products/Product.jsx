@@ -5,14 +5,11 @@ import axios from 'axios'
 
 const Product = () => {
     
-    const [products, setProducts] = useState([])
-   
+    const [products, setProducts] = useState([])   
     const [isLoading, setIsLoading] = useState(false);
-
 
     const loadingProducts = () => {
         axios.get('http://localhost:9000/products').then(res => {
-            // console.log(res.data.products)
            
             const loadedProducts = []
             for(const key in res.data.products){
@@ -33,8 +30,6 @@ const Product = () => {
         useEffect(() => {
             setIsLoading(true)
             loadingProducts();
-            
-            
         }
     
         , [])
@@ -66,11 +61,6 @@ const Product = () => {
             }
         )
     } 
-    
-
-    
-    
-    
     return (
         <div>
             <AddProduct addProduct={addProductHandler} loading={isLoading} />

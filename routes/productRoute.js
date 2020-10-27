@@ -25,10 +25,11 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    let { id, name } = req.body;
+    let { id, name, unitPrice } = req.body;
     const newProduct = new Product({
       id: id,
       name: name,
+      unitPrice:unitPrice
     });
 
     await newProduct.save();
