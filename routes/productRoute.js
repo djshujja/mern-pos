@@ -15,8 +15,9 @@ router.get("/", async (req, res) => {
     res.send({
       message: "No products on database! ;c",
     });
+    
   } catch (error) {
-    res.send(500).send({
+    res.status(500).send({
       message: "Error occured!",
       error: error,
     });

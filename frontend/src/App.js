@@ -7,6 +7,7 @@ import Order from './Components/Order/Order';
 import Navbar from './Components/UI/Navbar';
 import OrderDetails from './Components/Order/OrderDetails';
 import OrderList from './Components/Order/OrderList';
+import Test from './Components/Test/Test';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Link to="/order">Order</Link> */}
         <Navbar />
         <Switch>
+          <Route path='/test' exact component={Test} />
           <Route path="/" exact component={Home} />
           <Route path="/order" exact component={Order} />
           <Route path="/products" exact component={Product} />

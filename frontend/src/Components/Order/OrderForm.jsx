@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {FormControl,InputLabel, Paper,TextField, Button,Table,TableBody,TableCell,TableContainer,TableHead,TableRow , MenuItem, Select} from '@material-ui/core'
+import { Paper,TextField, Button,Table,TableBody,TableCell,TableContainer,TableHead,TableRow , MenuItem, Select} from '@material-ui/core'
 import Axios from 'axios';
 import {Link} from 'react-router-dom'
 import '../../App.css'
@@ -17,7 +17,6 @@ const OrderForm = props => {
 
     useEffect( () => {
         setOrder({products, bill})
-
     }, [products])
 
     const handleSubmit = event => {
@@ -52,9 +51,7 @@ const OrderForm = props => {
     return (
        <div>
             <form onSubmit={handleSubmit}> 
-               
-                <Select
-                
+                <Select  
                 style={{width:"120px",marginTop:"16px" }}
                 onChange={e => handleChange(e.target.value)}
                 label={"Product"}
