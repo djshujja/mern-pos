@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
    try {
         const {products, bill } = req.body
+        console.log(req.body)
         let order = new Order({
             products: products,
             bill:bill
@@ -31,7 +32,6 @@ router.post('/', async (req, res) => {
             await dataProduct.save()
         });
        
-        console.log(order)
         await order.save()
         
         res.send(order)

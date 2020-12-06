@@ -41,7 +41,7 @@ const OrderForm = props => {
     }
 
     const handleSold = async () => {
-         
+         console.log(order)
         Axios.post('http://localhost:9000/orders', order).then(res => {
             alert("Thank you for shopping with us, please collect your recipt!")
             console.log(res)
